@@ -666,8 +666,32 @@ public class VendorServlet extends BaseServlet {
                     vendor.setImageUrl(imageUrl);
                 }
             } else {
-                vendor.setImageUrl(null);
-            }            
+                // Use Unsplash images based on vendor type for better visuals
+                String vendorType = vendor.getType().toLowerCase();
+                int vendorId = vendor.getId();
+                
+                // Add vendor ID to make the URL unique and prevent caching issues
+                if (vendorType.contains("catering")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?catering,food&vendor=" + vendorId);
+                } else if (vendorType.contains("photography")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?photography,camera&vendor=" + vendorId);
+                } else if (vendorType.contains("venue")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?venue,event-hall&vendor=" + vendorId);
+                } else if (vendorType.contains("decor") || vendorType.contains("decoration")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?decoration,event-decor&vendor=" + vendorId);
+                } else if (vendorType.contains("music") || vendorType.contains("dj")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?dj,music&vendor=" + vendorId);
+                } else if (vendorType.contains("cake") || vendorType.contains("bakery")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?cake,wedding-cake&vendor=" + vendorId);
+                } else if (vendorType.contains("transport")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?luxury-car,limousine&vendor=" + vendorId);
+                } else if (vendorType.contains("planner")) {
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?event-planning,organizer&vendor=" + vendorId);
+                } else {
+                    // Generic event image for any other vendor type
+                    vendor.setImageUrl("https://source.unsplash.com/random/800x600/?event,celebration&vendor=" + vendorId);
+                }
+            }           
         } catch (SQLException e) {
             System.out.println("Error extracting vendor from result set: " + e.getMessage());
             e.printStackTrace();

@@ -97,9 +97,9 @@ VALUES
 -- Insert sample vendors linked to vendor users
 INSERT IGNORE INTO vendors (user_id, business_name, description, service_type, base_cost, location, contact_email, contact_phone, rating, image_url) 
 VALUES 
-    (2, 'Elite Events', 'Premium event planning services for all occasions.', 'Event Planning', 1500.00, 'New York, NY', 'vendor@eventapp.com', '9876543210', 4.8, '/resources/images/vendors/elite-events.jpg'),
-    (6, 'Gourmet Delights Catering', 'Exquisite catering for all types of events.', 'Catering', 1200.00, 'Chicago, IL', 'catering@example.com', '7778889999', 4.5, '/resources/images/vendors/catering.jpg'),
-    (7, 'Party Planning Pros', 'Full service event planning and coordination.', 'Event Planning', 2500.00, 'Los Angeles, CA', 'planner@example.com', '3334445555', 4.9, '/resources/images/vendors/party-planners.jpg');
+    (2, 'Elite Events', 'Premium event planning services for all occasions.', 'Event Planning', 1500.00, 'New York, NY', 'vendor@eventapp.com', '9876543210', 4.8, 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-1.2.1'),
+    (6, 'Gourmet Delights Catering', 'Exquisite catering for all types of events.', 'Catering', 1200.00, 'Chicago, IL', 'catering@example.com', '7778889999', 4.5, 'https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1'),
+    (7, 'Photography Pros', 'Full service event photography and coordination.', 'Event Planning', 2500.00, 'Los Angeles, CA', 'planner@example.com', '3334445555', 4.9, 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1');
 
 -- Insert sample reviews
 INSERT IGNORE INTO reviews (user_id, vendor_id, rating, comment)
@@ -122,3 +122,8 @@ VALUES
     (2, 2),
     (3, 1),
     (3, 3);
+
+-- Sample data for cart items
+INSERT IGNORE INTO cart_items (user_id, vendor_id)
+VALUES
+    (3, 1),

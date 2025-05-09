@@ -35,14 +35,6 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <c:choose>
-                                                    <c:when test="${not empty vendor.imageUrl}">
-                                                        <img src="${vendor.imageUrl}" class="img-thumbnail me-3" alt="${vendor.name}" width="80">
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <img src="https://via.placeholder.com/80?text=No+Image" class="img-thumbnail me-3" alt="No Image Available">
-                                                    </c:otherwise>
-                                                </c:choose>
                                                 <div>
                                                     <h5 class="mb-0">${vendor.name}</h5>
                                                 </div>

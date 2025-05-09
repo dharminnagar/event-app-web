@@ -45,35 +45,8 @@ public class BookingServlet extends BaseServlet {
         }
         
         if ("/cart".equals(path)) {
-            HttpSession session = request.getSession();
-            User user = getLoggedInUser(request);
-            
-            if (user == null) {
-                response.sendRedirect(request.getContextPath() + "/login");
-                return;
-            }
-            
-            // Get or create cart
-            Cart cart = (Cart) session.getAttribute("cart");
-            if (cart == null) {
-                cart = new Cart(user.getId());
-                session.setAttribute("cart", cart);
-            }
-            
-            // Get vendor details for each item in the cart
-            List<Vendor> cartVendors = new ArrayList<>();
-            if (cart.getVendorIds() != null && !cart.getVendorIds().isEmpty()) {
-                for (Integer vendorId : cart.getVendorIds()) {
-                    Vendor vendor = getVendorById(vendorId);
-                    if (vendor != null) {
-                        cartVendors.add(vendor);
-                    }
-                }
-            }
-            
-            // Add the list of vendors to the request
-            request.setAttribute("cartVendors", cartVendors);
-            request.getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(request, response);
+            // Call handleViewCart instead of processing it here
+            handleViewCart(request, response);
         } else if ("/checkout".equals(path)) {
             handleCheckoutForm(request, response);
         } else if ("/user/bookings".equals(path)) {
@@ -601,10 +574,25 @@ public class BookingServlet extends BaseServlet {
             if (resultSet.next()) {
                 Vendor vendor = new Vendor();
                 vendor.setId(resultSet.getInt("id"));
-                vendor.setName(resultSet.getString("name"));
-                vendor.setType(resultSet.getString("type"));
+                vendor.setName(resultSet.getString("business_name"));
+                vendor.setType(resultSet.getString("service_type"));
                 vendor.setDescription(resultSet.getString("description"));
-                vendor.setContactInfo(resultSet.getString("contact_info"));
+                
+                // Handle contact info properly
+                try {
+                    String contactEmail = resultSet.getString("contact_email");
+                    String contactPhone = resultSet.getString("contact_phone");
+                    vendor.setContactInfo(contactEmail + " | " + contactPhone);
+                } catch (SQLException e) {
+                    // If the specific columns don't exist, try the combined column as fallback
+                    try {
+                        vendor.setContactInfo(resultSet.getString("contact_info"));
+                    } catch (SQLException ex) {
+                        // If neither approach works, set a default value
+                        vendor.setContactInfo("Contact information not available");
+                    }
+                }
+                
                 vendor.setBaseCost(resultSet.getDouble("base_cost"));
                 vendor.setImageUrl(resultSet.getString("image_url"));
                 return vendor;
