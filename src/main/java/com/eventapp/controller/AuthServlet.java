@@ -164,7 +164,7 @@ public class AuthServlet extends BaseServlet {
         if ("ADMIN".equals(userType)) {
             return "/admin/dashboard";
         } else if ("VENDOR".equals(userType)) {
-            return "/vendor/dashboard";
+            return "/vendor-dashboard";
         } else {
             return "/vendors"; // Default for CUSTOMER
         }

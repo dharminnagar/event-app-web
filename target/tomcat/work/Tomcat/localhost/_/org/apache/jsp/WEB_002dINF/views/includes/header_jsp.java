@@ -370,7 +370,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\n");
         out.write("                                        <li><a class=\"dropdown-item\" href=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${pageContext.request.contextPath}", java.lang.String.class, (javax.servlet.jsp.PageContext)_jspx_page_context, null, false));
-        out.write("/vendor/dashboard\">\n");
+        out.write("/vendor-dashboard\">\n");
         out.write("                                            <i class=\"fas fa-store me-2\"></i>Vendor Dashboard\n");
         out.write("                                        </a></li>\n");
         out.write("                                    ");

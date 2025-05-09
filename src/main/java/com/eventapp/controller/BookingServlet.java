@@ -38,6 +38,13 @@ public class BookingServlet extends BaseServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getServletPath();
+        String requestURI = request.getRequestURI();
+        String contextPath = request.getContextPath();
+        
+        System.out.println("Request URI: " + requestURI);
+        System.out.println("Context Path: " + contextPath);
+        System.out.println("Servlet Path: " + path);
+        System.out.println("Path Info: " + request.getPathInfo());
         
         // Check if user is logged in for all booking-related operations
         if (!checkLogin(request, response)) {
@@ -45,14 +52,29 @@ public class BookingServlet extends BaseServlet {
         }
         
         if ("/cart".equals(path)) {
-            // Call handleViewCart instead of processing it here
             handleViewCart(request, response);
         } else if ("/checkout".equals(path)) {
             handleCheckoutForm(request, response);
         } else if ("/user/bookings".equals(path)) {
             handleViewBookings(request, response);
-        } else if (path.startsWith("/booking/")) {
-            handleViewBookingDetails(request, response);
+        } else if (path.startsWith("/booking")) {
+            // Special handling for booking details
+            if (requestURI.length() > contextPath.length() + "/booking".length()) {
+                String[] parts = requestURI.substring(contextPath.length() + "/booking".length() + 1).split("/");
+                if (parts.length > 0 && !parts[0].isEmpty()) {
+                    try {
+                        int bookingId = Integer.parseInt(parts[0]);
+                        handleViewBookingDetails(request, response, bookingId);
+                        return;
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid booking ID format: " + parts[0]);
+                    }
+                }
+            }
+            response.sendRedirect(request.getContextPath() + "/user/bookings");
+        } else {
+            System.out.println("Unknown path: " + path);
+            response.sendRedirect(request.getContextPath() + "/");
         }
     }
 
@@ -238,19 +260,21 @@ public class BookingServlet extends BaseServlet {
     /**
      * Handles viewing details for a specific booking.
      */
-    private void handleViewBookingDetails(HttpServletRequest request, HttpServletResponse response)
+    private void handleViewBookingDetails(HttpServletRequest request, HttpServletResponse response, int bookingId)
             throws ServletException, IOException {
-        String pathInfo = request.getPathInfo();
-        if (pathInfo != null && pathInfo.length() > 1) {
-            try {
-                int bookingId = Integer.parseInt(pathInfo.substring(1));
+                System.out.println("Handling view booking details for ID: " + bookingId); // Debug statement
+        
                 Booking booking = getBookingById(bookingId);
                 
                 if (booking != null) {
+                    System.out.println("Booking found: " + booking.getId()); // Debug statement
                     User user = getLoggedInUser(request);
                     
                     // Ensure user can only view their own bookings (or is admin)
                     if (booking.getUserId() == user.getId() || isAdmin(request)) {
+                        // Add current date for comparing with event dates (to determine if cancellation is allowed)
+                        request.setAttribute("now", new Date());
+                        
                         // Get details of vendors in this booking
                         List<Vendor> bookingVendors = new ArrayList<>();
                         for (Integer vendorId : booking.getVendorIds()) {
@@ -260,18 +284,31 @@ public class BookingServlet extends BaseServlet {
                             }
                         }
                         
+                        System.out.println("Setting booking attributes: id=" + booking.getId() + ", vendors=" + bookingVendors.size()); // Debug statement
                         request.setAttribute("booking", booking);
                         request.setAttribute("bookingVendors", bookingVendors);
-                        request.getRequestDispatcher("/WEB-INF/views/booking-details.jsp").forward(request, response);
-                        return;
+                        
+                        // Use the full booking details JSP
+                        String jspPath = "/WEB-INF/views/booking-details.jsp";
+                        System.out.println("Forwarding to JSP: " + jspPath); // Debug statement
+                        
+                        try {
+                            request.getRequestDispatcher(jspPath).forward(request, response);
+                            System.out.println("Forward to JSP completed"); // Debug statement
+                            return;
+                        } catch (Exception e) {
+                            System.out.println("Error forwarding to JSP: " + e.getMessage()); // Debug statement
+                            e.printStackTrace();
+                        }
+                    } else {
+                        System.out.println("Authorization failed. User ID: " + user.getId() + ", Booking user ID: " + booking.getUserId()); // Debug statement
                     }
+                } else {
+                    System.out.println("Booking not found with ID: " + bookingId); // Debug statement
                 }
-            } catch (NumberFormatException e) {
-                // Invalid booking ID format
-            }
-        }
         
         // Booking not found or unauthorized
+        System.out.println("Redirecting to bookings page"); // Debug statement
         response.sendRedirect(request.getContextPath() + "/user/bookings");
     }
     
