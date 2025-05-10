@@ -41,11 +41,11 @@
         <get src="https://repo1.maven.org/maven2/jakarta/servlet/jakarta.servlet-api/5.0.0/jakarta.servlet-api-5.0.0.jar" 
              dest="${lib.dir}/jakarta.servlet-api-5.0.0.jar" 
              skipexisting="true"/>
-        <get src="https://repo1.maven.org/maven2/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/2.0.0/jakarta.servlet.jsp.jstl-api-2.0.0.jar" 
-             dest="${lib.dir}/jakarta.servlet.jsp.jstl-api-2.0.0.jar" 
+        <get src="https://repo1.maven.org/maven2/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar" 
+             dest="${lib.dir}/jakarta.servlet.jsp.jstl-api-3.0.0.jar" 
              skipexisting="true"/>
-        <get src="https://repo1.maven.org/maven2/org/glassfish/web/jakarta.servlet.jsp.jstl/2.0.0/jakarta.servlet.jsp.jstl-2.0.0.jar" 
-             dest="${lib.dir}/jakarta.servlet.jsp.jstl-2.0.0.jar" 
+        <get src="https://repo1.maven.org/maven2/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar" 
+             dest="${lib.dir}/jakarta.servlet.jsp.jstl-3.0.1.jar" 
              skipexisting="true"/>
         <get src="https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar" 
              dest="${lib.dir}/mysql-connector-java-8.0.28.jar" 

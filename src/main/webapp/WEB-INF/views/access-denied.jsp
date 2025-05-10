@@ -1,16 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Denied - Event Aggregator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-</head>
-<body>
-    <jsp:include page="includes/header.jsp" />
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+
+<jsp:include page="/WEB-INF/views/includes/header.jsp">
+    <jsp:param name="pageTitle" value="Access Denied" />
+</jsp:include>
     
     <div class="container mt-5">
         <div class="row">
@@ -32,7 +25,4 @@
         </div>
     </div>
     
-    <jsp:include page="includes/footer.jsp" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <jsp:include page="/WEB-INF/views/includes/footer.jsp" />
