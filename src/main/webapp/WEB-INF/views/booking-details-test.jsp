@@ -13,7 +13,7 @@
     <p>Event Date: ${booking.eventDate}</p>
     <p>Location: ${booking.eventLocation}</p>
     <p>Status: ${booking.status}</p>
-    <p>Total Cost: ${booking.totalCost}</p>
+    <p>Total Cost: ₹${booking.totalCost}</p>
     
     <h2>Vendors:</h2>
     <ul>

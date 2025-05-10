@@ -91,7 +91,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">
-                <i class="fas fa-calendar-check text-primary me-2"></i>Event Aggregator
+                <i class="fas fa-calendar-check text-primary me-2"></i>Eventify
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,12 +105,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="${pageContext.request.contextPath}/vendors">Vendors</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">How It Works</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
+                    <!-- "How It Works" and "About Us" links have been removed -->
                 </ul>
                 
                 <ul class="navbar-nav">
@@ -139,13 +134,8 @@
                                         <i class="fas fa-calendar-alt me-2"></i>My Bookings
                                     </a></li>
                                     <c:if test="${sessionScope.user.userType eq 'VENDOR'}">
-                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/vendor/dashboard">
+                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/vendor-dashboard">
                                             <i class="fas fa-store me-2"></i>Vendor Dashboard
-                                        </a></li>
-                                    </c:if>
-                                    <c:if test="${sessionScope.user.userType eq 'ADMIN'}">
-                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/dashboard">
-                                            <i class="fas fa-user-shield me-2"></i>Admin Dashboard
                                         </a></li>
                                     </c:if>
                                     <li><hr class="dropdown-divider"></li>

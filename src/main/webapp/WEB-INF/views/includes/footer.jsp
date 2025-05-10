@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="mb-3">Event Aggregator</h5>
+                    <h5 class="mb-3">Eventify</h5>
                     <p class="text-muted">Your one-stop platform for all event planning services. Find and book vendors for any occasion, from weddings to corporate events.</p>
                     <div class="d-flex mt-4">
                         <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
@@ -38,9 +38,9 @@
                 <div class="col-md-4">
                     <h5 class="mb-3">Contact Us</h5>
                     <ul class="list-unstyled text-muted">
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>123 Event Street, New York, NY 10001</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2"></i>(123) 456-7890</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>info@eventaggregator.com</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>123, Vasna road, Vadodara, Gujarat</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91 999999999</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>Eventify@gmail.com</li>
                     </ul>
                     
                     <h5 class="mt-4 mb-3">Subscribe to Newsletter</h5>
@@ -55,7 +55,7 @@
             
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2025 Event Aggregator. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2025 Eventify. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <a href="#" class="text-decoration-none text-muted me-3">Privacy Policy</a>

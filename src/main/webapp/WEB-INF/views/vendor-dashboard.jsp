@@ -88,7 +88,7 @@
                             <h4 class="mb-0">Vendor Profile</h4>
                         </div>
                         <div class="card-body">
-                            <form action="${pageContext.request.contextPath}/vendor/dashboard" method="post">
+                            <form action="${pageContext.request.contextPath}/vendor-dashboard" method="post">
                                 <input type="hidden" name="action" value="updateProfile">
                                 
                                 <div class="mb-3">
@@ -123,7 +123,7 @@
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label for="baseCost" class="form-label">Base Cost ($)</label>
+                                    <label for="baseCost" class="form-label">Base Cost (₹)</label>
                                     <input type="number" class="form-control" id="baseCost" name="baseCost" value="${vendorProfile.baseCost}" step="0.01" min="0" required>
                                 </div>
                                 
@@ -301,7 +301,7 @@
                 <h5 class="modal-title" id="addServiceModalLabel">Add New Service</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="${pageContext.request.contextPath}/vendor/dashboard" method="post">
+            <form action="${pageContext.request.contextPath}/vendor-dashboard" method="post">
                 <input type="hidden" name="action" value="addService">
                 <div class="modal-body">
                     <div class="mb-3">
@@ -363,7 +363,7 @@
                 <h5 class="modal-title" id="editServiceModalLabel">Edit Service</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="${pageContext.request.contextPath}/vendor/dashboard" method="post" id="editServiceForm">
+            <form action="${pageContext.request.contextPath}/vendor-dashboard" method="post" id="editServiceForm">
                 <input type="hidden" name="action" value="editService">
                 <input type="hidden" name="serviceId" id="editServiceId">
                 <div class="modal-body">
@@ -432,7 +432,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <form action="${pageContext.request.contextPath}/vendor/dashboard" method="post">
+                <form action="${pageContext.request.contextPath}/vendor-dashboard" method="post">
                     <input type="hidden" name="action" value="deleteService">
                     <input type="hidden" name="serviceId" id="deleteServiceId">
                     <button type="submit" class="btn btn-danger">Delete Service</button>
@@ -445,7 +445,7 @@
 <script>
     // Function to handle editing a service
     function editService(serviceId) {
-        fetch('${pageContext.request.contextPath}/vendor/dashboard?action=getService&serviceId=' + serviceId)
+        fetch('${pageContext.request.contextPath}/vendor-dashboard?action=getService&serviceId=' + serviceId)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('editServiceId').value = data.id;

@@ -72,12 +72,12 @@
                                     <tr>
                                         <td>${vendor.name}</td>
                                         <td>${vendor.type}</td>
-                                        <td class="text-end">$<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
+                                        <td class="text-end">₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
                                     </tr>
                                 </c:forEach>
                                 <tr>
                                     <td colspan="2" class="text-end fw-bold">Total</td>
-                                    <td class="text-end fw-bold">$<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></td>
+                                    <td class="text-end fw-bold">₹<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></td>
                                 </tr>
                             </tbody>
                         </table>
