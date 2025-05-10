@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -141,6 +141,11 @@
                                     <c:if test="${sessionScope.user.userType eq 'VENDOR'}">
                                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/vendor/dashboard">
                                             <i class="fas fa-store me-2"></i>Vendor Dashboard
+                                        </a></li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.user.userType eq 'ADMIN'}">
+                                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/dashboard">
+                                            <i class="fas fa-user-shield me-2"></i>Admin Dashboard
                                         </a></li>
                                     </c:if>
                                     <li><hr class="dropdown-divider"></li>
