@@ -80,7 +80,7 @@
                                     <td><fmt:formatDate value="${booking.bookingDate}" pattern="MMM dd, yyyy" /></td>
                                     <td><fmt:formatDate value="${booking.eventDate}" pattern="MMM dd, yyyy" /></td>
                                     <td>${booking.eventLocation}</td>
-                                    <td>$<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></td>
+                                    <td>₹<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></td>
                                     <td>
                                         <c:choose>
                                             <c:when test="${booking.status eq 'CONFIRMED'}">
@@ -197,7 +197,7 @@
                                 <td>${status.index + 1}</td>
                                 <td>${vendor.name}</td>
                                 <td>${vendor.type}</td>
-                                <td>$<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
+                                <td>₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
                             </tr>
                         </c:if>
                     </c:forEach>
@@ -205,7 +205,7 @@
                 <tfoot>
                     <tr>
                         <th colspan="3" class="text-end">Total:</th>
-                        <th>$<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></th>
+                        <th>₹<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></th>
                     </tr>
                 </tfoot>
             </table>
@@ -242,7 +242,7 @@
                         <td><fmt:formatDate value="${booking.eventDate}" pattern="MM/dd/yyyy" /></td>
                         <td>${booking.eventLocation}</td>
                         <td>${booking.status}</td>
-                        <td>$<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></td>
+                        <td>₹<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></td>
                     </tr>
                 </c:forEach>
             </tbody>

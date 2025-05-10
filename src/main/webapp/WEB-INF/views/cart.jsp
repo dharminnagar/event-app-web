@@ -41,7 +41,7 @@
                                             </div>
                                         </td>
                                         <td><span class="badge bg-primary">${vendor.type}</span></td>
-                                        <td class="text-end fw-bold">$<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
+                                        <td class="text-end fw-bold">₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
                                         <td class="text-end">
                                             <form action="${pageContext.request.contextPath}/remove-from-cart" method="post">
                                                 <input type="hidden" name="vendorId" value="${vendor.id}">
@@ -55,29 +55,8 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <!-- Recommendations -->
-                    <div class="mt-5">
-                        <h4 class="section-title">Recommended Add-ons</h4>
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                            <!-- These would be dynamically populated based on what's in the cart -->
-                            <c:forEach begin="1" end="3">
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="https://via.placeholder.com/300x150?text=Recommended+Service" class="card-img-top" alt="Recommended Service">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Recommended Service</h5>
-                                            <p class="card-text">Description of why this service complements your selections.</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <span class="fw-bold text-primary">$299.99</span>
-                                                <button class="btn btn-sm btn-outline-primary">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
+                    
+                    <!-- Recommendations section has been removed -->
                 </c:otherwise>
             </c:choose>
         </div>
@@ -97,7 +76,7 @@
 
                     <div class="d-flex justify-content-between mb-3">
                         <h5>Total:</h5>
-                        <h5>$<fmt:formatNumber value="${cart.totalCost}" pattern="#,##0.00"/></h5>
+                        <h5>₹<fmt:formatNumber value="${cart.totalCost}" pattern="#,##0.00"/></h5>
                     </div>
 
                     <div class="d-grid gap-2">

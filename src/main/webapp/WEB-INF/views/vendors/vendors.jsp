@@ -89,13 +89,13 @@
                         <div class="mb-4">
                             <label for="priceRange" class="form-label fw-bold">Price Range</label>
                             <div class="d-flex align-items-center gap-2 mb-2">
-                                <span>$0</span>
+                                <span>₹0</span>
                                 <input type="range" class="form-range flex-grow-1" id="priceRange" name="maxPrice" 
                                     min="0" max="10000" step="100" value="${empty param.maxPrice ? '10000' : param.maxPrice}">
-                                <span>$10,000+</span>
+                                <span>₹10,000+</span>
                             </div>
                             <div class="text-center">
-                                <span id="priceRangeValue">$${empty param.maxPrice ? '10000' : param.maxPrice}+</span>
+                                <span id="priceRangeValue">₹${empty param.maxPrice ? '10000' : param.maxPrice}+</span>
                             </div>
                         </div>
                         
@@ -204,7 +204,7 @@
                             </div>
                             <div class="card-footer bg-white p-4 border-top-0">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">$${(status.index + 1) * 100 - 10}.99</span>
+                                    <span class="fw-bold text-primary">₹${(status.index + 1) * 100 - 10}.99</span>
                                     <a href="${pageContext.request.contextPath}/vendor/details/${status.index}" class="btn btn-outline-primary">
                                         View Details
                                     </a>
@@ -239,7 +239,7 @@
                                         <span class="text-muted small">Toronto, ON</span>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="fw-bold text-primary">$${(status.index + 1) * 100 - 10}.99</span>
+                                        <span class="fw-bold text-primary">₹${(status.index + 1) * 100 - 10}.99</span>
                                         <a href="${pageContext.request.contextPath}/vendor/details/${status.index}" class="btn btn-outline-primary">
                                             View Details
                                         </a>
@@ -282,7 +282,7 @@
         
         if(priceRange && priceRangeValue) {
             priceRange.addEventListener('input', function() {
-                priceRangeValue.textContent = '$' + this.value + '+';
+                priceRangeValue.textContent = '₹' + this.value + '+';
             });
         }
         
@@ -292,7 +292,7 @@
             resetFilters.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.getElementById('filterForm').reset();
-                priceRangeValue.textContent = '$10000+';
+                priceRangeValue.textContent = '₹10000+';
                 // Submit the form after resetting
                 setTimeout(() => {
                     document.getElementById('filterForm').submit();

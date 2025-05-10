@@ -111,14 +111,14 @@
                                     </a>
                                 </td>
                                 <td>${vendor.type}</td>
-                                <td>$<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
+                                <td>₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
                             </tr>
                         </c:forEach>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="3" class="text-end"><strong>Total:</strong></td>
-                            <td><strong>$<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></strong></td>
+                            <td><strong>₹<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></strong></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -239,14 +239,14 @@
                         <td>${status.index + 1}</td>
                         <td>${vendor.name}</td>
                         <td>${vendor.type}</td>
-                        <td>$<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
+                        <td>₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="3" class="text-end">Total:</th>
-                    <th>$<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></th>
+                    <th>₹<fmt:formatNumber value="${booking.totalCost}" pattern="#,##0.00"/></th>
                 </tr>
             </tfoot>
         </table>

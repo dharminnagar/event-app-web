@@ -49,7 +49,7 @@
                 </div>
             </div>
             
-            <h3 class="text-primary mb-3">$<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></h3>
+            <h3 class="text-primary mb-3">₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/></h3>
             
             <div class="mb-4">
                 <h5>Description</h5>

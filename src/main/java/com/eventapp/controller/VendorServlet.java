@@ -8,16 +8,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.eventapp.model.Cart;
+import com.eventapp.model.User;
+import com.eventapp.model.Vendor;
+import com.eventapp.util.DatabaseUtil;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import com.eventapp.model.User;
-import com.eventapp.model.Vendor;
-import com.eventapp.model.Cart;
-import com.eventapp.util.DatabaseUtil;
 
 /**
  * Servlet for handling vendor service operations.
@@ -943,7 +943,8 @@ public class VendorServlet extends BaseServlet {
             connection = DatabaseUtil.getConnection();
             System.out.println("Database connection established: " + (connection != null));
             
-            String sql = "SELECT * FROM vendors ORDER BY business_name";
+            // Update the SQL query to explicitly check for active vendors
+            String sql = "SELECT * FROM vendors WHERE is_active = true ORDER BY business_name";
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
             
@@ -1242,14 +1243,14 @@ public class VendorServlet extends BaseServlet {
             }
         }
         
-        // Get location if available
+        // Handle location
         try {
             vendor.setLocation(rs.getString("location"));
         } catch (SQLException e) {
             vendor.setLocation("");
         }
         
-        // Check column names for price - some DBs might use price or base_cost
+        // Check column names for price - some DBs might use base_cost or price
         try {
             vendor.setBaseCost(rs.getDouble("base_cost"));
         } catch (SQLException e) {

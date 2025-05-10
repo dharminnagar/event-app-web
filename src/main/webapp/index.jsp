@@ -23,48 +23,7 @@
 
 <!-- Main Content -->
 <div class="container py-5">
-    <!-- Search Section -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-            <div class="card shadow border-0">
-                <div class="card-body p-4">
-                    <h4 class="card-title mb-4">Find the Perfect Vendors</h4>
-                    <form action="${pageContext.request.contextPath}/vendors" method="get">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="vendorType" class="form-label">Service Type</label>
-                                <select class="form-select" id="vendorType" name="type">
-                                    <option value="">All Services</option>
-                                    <option value="VENUE">Venues</option>
-                                    <option value="CATERING">Catering</option>
-                                    <option value="PHOTOGRAPHY">Photography</option>
-                                    <option value="DECOR">Decoration</option>
-                                    <option value="MUSIC">Music & Entertainment</option>
-                                    <option value="OTHER">Other Services</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location" placeholder="Enter city or area">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="budget" class="form-label">Budget Range</label>
-                                <select class="form-select" id="budget" name="budget">
-                                    <option value="">Any Budget</option>
-                                    <option value="low">Under $500</option>
-                                    <option value="medium">$500 - $2000</option>
-                                    <option value="high">$2000+</option>
-                                </select>
-                            </div>
-                            <div class="col-12 text-center mt-4">
-                                <button type="submit" class="btn btn-primary px-5">Search Vendors</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Search Section has been removed -->
 
     <!-- Featured Vendors -->
     <section class="mb-5">

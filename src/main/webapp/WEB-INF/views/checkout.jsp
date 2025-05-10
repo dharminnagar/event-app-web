@@ -121,7 +121,7 @@
                                             <div><small class="text-muted">${vendor.type}</small></div>
                                         </div>
                                         <div class="text-end">
-                                            $<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/>
+                                            ₹<fmt:formatNumber value="${vendor.baseCost}" pattern="#,##0.00"/>
                                         </div>
                                     </div>
                                 </c:forEach>
@@ -132,7 +132,7 @@
                             <!-- Total -->
                             <div class="d-flex justify-content-between mb-3">
                                 <h5>Total:</h5>
-                                <h5>$<fmt:formatNumber value="${cart.totalCost}" pattern="#,##0.00"/></h5>
+                                <h5>₹<fmt:formatNumber value="${cart.totalCost}" pattern="#,##0.00"/></h5>
                             </div>
 
                             <!-- Terms Agreement -->
